@@ -26,6 +26,6 @@ io.on('connection', socket => {
     })
 })
 
-server.listen(app.get('port'), 'localhost', () => {
+server.listen(app.get('port'), () => {
     console.log('servidor disponível na porta: ' + app.get('port'))
 });

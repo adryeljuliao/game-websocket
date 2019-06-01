@@ -1,11 +1,11 @@
 
+const socket = io('http://localhost:3005');
 let container = document.getElementById('container');
 let image = document.getElementById('carro');
 let positionHorizontal = 0;
 let positionVertical = 0;
-var socket = io('http://localhost:3005');
 let rotate = 'rotate-top';
-
+console.log(process.env.APP_URL);
 const keyBoard = {
     arrowLeft: 37,
     arrowUp: 38,
