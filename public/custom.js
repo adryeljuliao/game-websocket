@@ -1,5 +1,5 @@
 
-const socket = io('http://localhost:3005');
+const socket = io('https://projectwebsocket.herokuapp.com/');
 let container = document.getElementById('container');
 let image = document.getElementById('carro');
 let positionHorizontal = 0;
