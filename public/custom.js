@@ -5,7 +5,6 @@ let image = document.getElementById('carro');
 let positionHorizontal = 0;
 let positionVertical = 0;
 let rotate = 'rotate-top';
-console.log(process.env.APP_URL);
 const keyBoard = {
     arrowLeft: 37,
     arrowUp: 38,
