@@ -7,8 +7,10 @@ const app = express();
 const server = require('http').createServer(app);
 //defini o websocket
 const io = require('socket.io')(server);
+let dataImg = {
+};
 
-app.use(express.static(path.join(__dirname, 'public')));   
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -20,10 +22,14 @@ app.use('/', (req, res) => {
 
 io.on('connection', socket => {
     console.log(`socket conectado ${socket.id}`);
+    socket.emit('previousData', dataImg);
     socket.on('sendData', data => {
-        console.log(data);
+        dataImg = data;
         socket.broadcast.emit('receiveData', data);
-    })
+        console.log(dataImg);
+    });
+    console.log(`dados antigos:  ${dataImg}`);
+
 })
 
 server.listen(app.get('port'), () => {

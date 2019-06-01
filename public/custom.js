@@ -1,11 +1,11 @@
-
 const socket = io('https://projectwebsocket.herokuapp.com/');
 let container = document.getElementById('container');
 let image = document.getElementById('carro');
 let positionHorizontal = 0;
 let positionVertical = 0;
 let rotate = 'rotate-top';
-const keyBoard = {
+
+const keyboard = {
     arrowLeft: 37,
     arrowUp: 38,
     arrowRight: 39,
@@ -15,7 +15,7 @@ const keyBoard = {
     keyD: 68,
     keyS: 83
 }
-
+// https://projectwebsocket.herokuapp.com/
 renderImagePosition = atributes => {
     image.style.marginLeft = atributes.horizontal + 'px';
     image.style.marginTop = atributes.vertical + 'px';
@@ -28,7 +28,15 @@ socket.on('receiveData', data => {
     positionVertical = data.vertical;
     rotate = data.rotation;
     renderImagePosition(data);
-})
+});
+
+socket.on('previousData', data => {
+    positionHorizontal = data.horizontal;
+    positionVertical = data.vertical;
+    rotate = data.rotation;
+    renderImagePosition(data);
+    // console.log(data)
+});
 
 move = e => {
     switch (e.keyCode) {
@@ -79,17 +87,13 @@ move = e => {
         default:
             break;
     }
-
     let attImage = {
         horizontal: positionHorizontal,
         vertical: positionVertical,
         rotation: rotate
     }
-
     renderImagePosition(attImage);
     socket.emit('sendData', attImage);
-
-
 }
 
 document.addEventListener('keydown', move);
