@@ -1,6 +1,6 @@
 const socket = io('https://projectwebsocket.herokuapp.com/');
 let container = document.getElementById('container');
-let image = document.getElementById('carro');
+let image = document.getElementById('car');
 let positionHorizontal = 0;
 let positionVertical = 0;
 let rotate = 'rotate-top';
