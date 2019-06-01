@@ -1,14 +1,12 @@
 const express = require('express');
 const path = require('path');
 
-//ter uma porta que vai ser acessada pelo websocket
 const app = express();
 //definir protocolo http
 const server = require('http').createServer(app);
-//defini o websocket
+//definir o websocket
 const io = require('socket.io')(server);
-let dataImg = {
-};
+let dataImg = {};
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public'));

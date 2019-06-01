@@ -1,10 +1,10 @@
-const socket = io('https://projectwebsocket.herokuapp.com/');
+
+const socket = io('http://localhost:3005');
 let container = document.getElementById('container');
 let image = document.getElementById('carro');
 let positionHorizontal = 0;
 let positionVertical = 0;
 let rotate = 'rotate-top';
-
 const keyboard = {
     arrowLeft: 37,
     arrowUp: 38,
@@ -31,11 +31,12 @@ socket.on('receiveData', data => {
 });
 
 socket.on('previousData', data => {
-    positionHorizontal = data.horizontal;
-    positionVertical = data.vertical;
-    rotate = data.rotation;
+    positionHorizontal = data.horizontal || 0;
+    positionVertical = data.vertical || 0;
+    rotate = data.rotation || 'rotate-top';
+
     renderImagePosition(data);
-    // console.log(data)
+    console.log(positionHorizontal)
 });
 
 move = e => {
