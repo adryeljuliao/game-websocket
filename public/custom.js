@@ -40,8 +40,8 @@ socket.on('previousData', data => {
 
 move = e => {
     switch (e.keyCode) {
-        case keyBoard.arrowRight:
-        case keyBoard.keyD:
+        case keyboard.arrowRight:
+        case keyboard.keyD:
             if (container.clientWidth - 100 <= positionHorizontal) {
                 positionHorizontal = container.clientWidth - 100;
             } else {
@@ -51,8 +51,8 @@ move = e => {
             // console.log('direita')
 
             break;
-        case keyBoard.arrowLeft:
-        case keyBoard.keyA:
+        case keyboard.arrowLeft:
+        case keyboard.keyA:
             if (positionHorizontal <= 5) {
                 positionHorizontal = 0;
             } else {
@@ -62,8 +62,8 @@ move = e => {
             // console.log('esquerda')
 
             break;
-        case keyBoard.arrowUp:
-        case keyBoard.keyW:
+        case keyboard.arrowUp:
+        case keyboard.keyW:
             if (positionVertical <= 5) {
                 positionVertical = 0;
             } else {
@@ -73,8 +73,8 @@ move = e => {
             // console.log('cima')
 
             break;
-        case keyBoard.arrowDown:
-        case keyBoard.keyS:
+        case keyboard.arrowDown:
+        case keyboard.keyS:
             if (container.clientHeight - 100 <= positionVertical) {
                 positionVertical = container.clientHeight - 100;
             } else {
